@@ -1,9 +1,7 @@
-
-
-import CarouselSlide from '../components/Carousel/CarouselSlide';
-import HeroCarousel from '../components/Carousel/HeroCarousel';
-import DiscountSection from '../components/Discount/DiscountSection';
-import Features from '../components/Features';
+import HeroCarousel from '../components/Home/Carousel/HeroCarousel';
+import Category from '../components/Home/Categories/Category';
+import DiscountSection from '../components/Home/Discount/DiscountSection';
+import Features from '../components/Home/Features';
 import Products from '../components/Products/Products';
 
 const Home = () => {
@@ -11,6 +9,7 @@ const Home = () => {
         <div>
         <HeroCarousel/>
         <Features/>
+        <Category/>
         <Products/>
         <DiscountSection/>
         </div>

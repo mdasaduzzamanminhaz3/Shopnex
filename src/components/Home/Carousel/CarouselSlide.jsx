@@ -1,4 +1,4 @@
-import bgimg from "../../assets/images/banner-image-bg.jpg"
+import bgimg from "../../../assets/images/banner-image-bg.jpg"
 const CarouselSlide = ({title,subtitle,image}) => {
     return (
         <section className="w-full h-[650px] bg-cover bg-center flex justify-center items-center px-4 md:px-8" style={{backgroundImage:`url(${bgimg})`}}>

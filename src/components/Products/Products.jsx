@@ -52,7 +52,7 @@ const Products = () => {
         className="mt-4 px-4 container"
       >
         {products.map((product) => (
-          <SwiperSlide key={product.id} className="flex justify-center">
+          <SwiperSlide key={product.id} className="flex justify-center hover:shadow-lg">
             <ProductItem key={product.id} product={product} />
           </SwiperSlide>
         ))}
