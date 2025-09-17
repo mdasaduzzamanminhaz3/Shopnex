@@ -10,8 +10,9 @@ const ShopPage = () => {
     const [currentPage,setCurrentPage] = useState(1);
     const [priceRange,setPriceRange] = useState([0,1000]);
     const [searchQuery,setSearchQuery] = useState("");
+    const [sortOrder,setSortOrder] = useState("");
     const [selectedCategory,setSelectedCategory] = useState("")
-    const {products,loading,totalPages} = useFetchProduct(currentPage,priceRange,selectedCategory,searchQuery);
+    const {products,loading,totalPages} = useFetchProduct(currentPage,priceRange,selectedCategory,searchQuery,sortOrder);
     const categories = useFetchCategories();
     const handlePriceChange = (index,value) =>{
         setPriceRange((prev)=>{
@@ -35,7 +36,7 @@ const ShopPage = () => {
 
     return (
         <div>
-            <FilterSection priceRange={priceRange} handlePriceChange={handlePriceChange} categories={categories} selectedCategory={selectedCategory} handleCategoryChange={setSelectedCategory} searchQuery={searchQuery} handleSearchQuery={setSearchQuery}/>
+            <FilterSection priceRange={priceRange} handlePriceChange={handlePriceChange} categories={categories} selectedCategory={selectedCategory} handleCategoryChange={setSelectedCategory} searchQuery={searchQuery} handleSearchQuery={setSearchQuery} sortOrder={sortOrder} handleSorting={setSortOrder}/>
             <ProductList products={products} loading={loading}/>
             <Pagination totalPages={totalPages} currentPage={currentPage} handlePageChange={setCurrentPage}/>
         </div>
