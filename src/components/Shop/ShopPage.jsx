@@ -35,7 +35,7 @@ const ShopPage = () => {
     
 
     return (
-        <div>
+        <div className='bg-gray-100'>
             <FilterSection priceRange={priceRange} handlePriceChange={handlePriceChange} categories={categories} selectedCategory={selectedCategory} handleCategoryChange={setSelectedCategory} searchQuery={searchQuery} handleSearchQuery={setSearchQuery} sortOrder={sortOrder} handleSorting={setSortOrder}/>
             <ProductList products={products} loading={loading}/>
             <Pagination totalPages={totalPages} currentPage={currentPage} handlePageChange={setCurrentPage}/>

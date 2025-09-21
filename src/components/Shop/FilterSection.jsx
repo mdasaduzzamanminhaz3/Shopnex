@@ -10,7 +10,7 @@ const FilterSection = ({
   handleSorting,
 }) => {
   return (
-    <div className="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto px-6 py-6">
       {/* Price Range */}
       <div className="bg-white p-4 rounded-lg shadow">
         <label className="block text-sm font-medium text-gray-700 mb-2">
