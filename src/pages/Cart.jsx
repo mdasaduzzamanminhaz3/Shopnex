@@ -6,8 +6,10 @@ import CartSummary from "../components/Cart/CartSummary";
 const Cart = () => {
   const {
     cart,
+    cartId,
+    getCart,
     loading,
-    createOrGetCart,
+    
     updateCartItemQuantity,
     deleteCartItems,
   } = useCartContext();
@@ -15,8 +17,8 @@ const Cart = () => {
   const [localCart, setLocalCart] = useState(cart);
 
   useEffect(() => {
-    if (!cart && !loading) createOrGetCart();
-  }, [createOrGetCart, cart, loading]);
+    getCart();
+  }, []);
 
   useEffect(() => {
     setLocalCart(cart);
@@ -29,6 +31,7 @@ const Cart = () => {
     const prevLocalCartCopy = localCart; // store a copy of localCart
 
     setLocalCart((prevLocalCart) => {
+     
       const updatedItmes = prevLocalCart.items.map((item) =>
         item.id === itemId
           ? {
@@ -96,6 +99,7 @@ const Cart = () => {
           <CartSummary
             totalPrice={localCart.total_price}
             itemCount={localCart.items.length}
+            cartId={cartId}
           />
         </div>
       </div>

@@ -2,18 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import authApiClient from "../services/auth-api-client";
 
 const useCart = () => {
+
   const [authToken] = useState(
-    () => JSON.parse(localStorage.getItem("authTokens")).access
+    () => JSON.parse(localStorage.getItem("authTokens"))?.access
+    
   );
-//   const [authToken] = useState(() => {
-//   const storedTokens = localStorage.getItem("authTokens");
-//   try {
-//     return storedTokens ? JSON.parse(storedTokens).access : null;
-//   } catch (error) {
-//     console.error("Failed to parse authTokens", error);
-//     return null;
-//   }
-// });
   const [cart, setCart] = useState(null);
   const [cartId, setCartId] = useState(() => localStorage.getItem("cartId"));
   const [loading, setLoading] = useState(false);
@@ -22,19 +15,34 @@ const useCart = () => {
   const createOrGetCart = useCallback(async () => {
     setLoading(true);
     try {
-      console.log(authToken);
       const response = await authApiClient.post("/carts/");
       if (!cartId) {
         localStorage.setItem("cartId", response.data.id);
         setCartId(response.data.id);
+        
       }
       setCart(response.data);
+      
+    } catch (error) {
+      console.log(error);
+      
+    } finally {
+      setLoading(false);
+    }
+  }, [cartId]);
+
+  const getCart = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await authApiClient.get("/carts/");
+      console.log(response);
+      setCart(response.data[0]);
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
     }
-  }, [authToken, cartId]);
+  }, []);
 
   // Add items to the cart
   const AddCartItems = useCallback(
@@ -94,10 +102,12 @@ const useCart = () => {
   return {
     cart,
     loading,
+    cartId,
     createOrGetCart,
     AddCartItems,
     updateCartItemQuantity,
     deleteCartItems,
+    getCart,
   };
 };
 
