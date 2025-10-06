@@ -13,6 +13,8 @@ const AddProduct = () => {
     const [categories,setCategories] = useState([]);
     const [productId,setProductId] = useState(null);
     const [previewImages, setPreviewImages] = useState([]);
+    const [images, setImages] = useState([]);
+    const [loading, setLoading] = useState(false);
        //fetch categories
     useEffect(()=> {
         apiClient.get('/categories/').then(res =>{
@@ -34,12 +36,30 @@ const AddProduct = () => {
 //handle image change
 const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
+    setImages(files);
     setPreviewImages(files.map((file) => URL.createObjectURL(file)));
+}
+
+//handle image upload
+const handleImageUpload = async() => {
+    if(!images.length) return alert("Please select images");
+    setLoading(true)
+    try {
+        for (const image of images){
+            const formData = new FormData();
+            formData.append("image",image)
+            await authApiClient.post(`/products/${productId}/images/`,formData);
+            setLoading(false);
+        }
+        alert("Images uploaded successfully!")
+    } catch (error) {
+        console.log("Error uploading image", error);
+    }
 }
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-semibold mb-4">Add New Product</h2>
-    {productId ? (
+    {!productId ? (
       <form onSubmit={handleSubmit(handleProductAdd)} className="space-y-4">
         <div>
           <label className="block text-sm font-medium">Product Name</label>
@@ -138,7 +158,7 @@ const handleImageChange = (e) => {
                 ))}
             </div>
             )}
-            <button className="btn btn-primary w-full mt-2">Upload Images</button>
+            <button disabled={loading} onClick={handleImageUpload} className="btn btn-primary w-full mt-2">{loading ?"Uploading images...":"Upload Images"}</button>
         </div>
     )}
 
