@@ -30,9 +30,11 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
+            <Link to='/'>
             <li>
-              <a>Item 1</a>
+              <a>Home</a>
             </li>
+            </Link>
             <li>
               <a>Parent</a>
               <ul className="p-2">
@@ -154,6 +156,11 @@ const Navbar = () => {
                 <li>
                   <a>Settings</a>
                 </li>
+                <Link to="dashboard">
+                <li>
+                  <a>Dashboard</a>
+                </li>
+                </Link>
                 <li>
                   <a onClick={logoutUser}>Logout</a>
                 </li>

@@ -25,12 +25,13 @@ const Products = () => {
     <section className="bg-gray-50 mx-auto py-16 ">
       <div className="flex justify-between items-center px-4 md:px-8 mb-4">
         <h2 className="text-3xl md:text-4xl font-bold">Trending Products</h2>
+
+        
         <a
-          href="#"
-          className="btn btn-secondary px-6 py-6 rounded-full text-lg"
-        >
+          href="/shop" className="btn btn-secondary px-6 py-6 rounded-full text-lg">
           View All
         </a>
+        
       </div>
       {/* Spinner */}
       {isLoading && (
