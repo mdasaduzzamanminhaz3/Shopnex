@@ -94,8 +94,8 @@ const ReviewSection = () => {
       <div className="divider"></div>
 
       {isLoading ? (
-        <div className="flex justify-center py-8">
-          <span className="loading loading-spinner loading-lg text-primary"></span>
+        <div className="flex justify-center items-center py-10 min-h-screen">
+          <span className="loading loading-spinner text-center loading-xl text-secondary"></span>
         </div>
       ) : reviews.length === 0 ? (
         <div className="text-center py-8">

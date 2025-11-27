@@ -50,7 +50,7 @@ const CartSummary = ({ totalPrice, itemCount, cartId }) => {
           <button
             disabled={itemCount === 0}
             onClick={createOrder}
-            className="btn btn-primary w-full"
+            className="btn btn-secondary w-full"
           >
             Proceed to Checkout
           </button>

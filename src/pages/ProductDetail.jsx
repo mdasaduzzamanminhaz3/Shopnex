@@ -20,7 +20,9 @@ const ProductDetail = () => {
     });
   }, [productId]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="flex justify-center items-center py-10 min-h-screen">
+          <span className="loading loading-spinner text-center loading-xl text-secondary"></span>
+        </div>
   if (!product) return <div>Product Not Found...</div>;
 
   return (

@@ -46,7 +46,7 @@ const ReviewForm = ({ onSubmit }) => {
 
       <button
         type="submit"
-        className="btn btn-primary w-full md:w-auto"
+        className="btn bg-pink-500 text-white w-full md:w-auto"
         disabled={isSubmitting}
       >
         {isSubmitting ? (

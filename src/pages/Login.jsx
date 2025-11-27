@@ -82,7 +82,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="btn btn-primary w-full"
+              className="btn btn-secondary w-full"
               disabled={loading}
             >
               {loading ? "Logging In..." : "Login"}
@@ -92,7 +92,7 @@ const Login = () => {
           <div className="text-center mt-4">
             <p className="text-base-content/70">
               Don&apos;t have an account?{" "}
-              <Link to="/register" className="link link-primary">
+              <Link to="/register" className="link link-secondary">
                 Sign up
               </Link>
             </p>

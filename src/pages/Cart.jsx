@@ -24,7 +24,9 @@ const Cart = () => {
     setLocalCart(cart);
   }, [cart]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="flex justify-center items-center py-10 min-h-screen">
+          <span className="loading loading-spinner text-center loading-xl text-secondary"></span>
+        </div>;
   if (!localCart) return <p>No Cart Found</p>;
 
   const handleUpdateQuantity = async (itemId, newQuantity) => {
@@ -87,7 +89,7 @@ const Cart = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<span className="loading loading-spinner loading-xs mr-2"></span>}>
             <CartItemList
               items={localCart.items}
               handleUpdateQuantity={handleUpdateQuantity}

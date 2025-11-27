@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import banner from "../../../assets/images/banner-image-bg-1.jpg"
 import bannerImg from "../../../assets/images/banner-image3.png"
 import DiscountTimer from "./DiscountTimer";
@@ -15,7 +16,8 @@ const DiscountSection = () => {
                 <h1 className="text-4xl md:text-5xl  font-bold text-gray-900 mb-6">30% Discount on All Items. Hurry Up !!!</h1>
                 {/* CountDown timer */}
                 <DiscountTimer/>
-                <button className='btn btn-secondary px-6 py-3 rounded-full shadow-md'>Shop Collection</button>
+                
+                <Link to="/shop"  className='btn btn-secondary px-6 py-3 rounded-full shadow-md'>Shop Collection</Link>
             </div>
 
 

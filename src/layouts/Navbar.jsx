@@ -28,7 +28,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="font-bold menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <Link to='/'>
             <li>
@@ -36,15 +36,10 @@ const Navbar = () => {
             </li>
             </Link>
             <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
             </li>
             <li>
               <Link to="/shop">Shop</Link>
@@ -52,30 +47,25 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to='/'>
-        <a className="btn btn-ghost text-xl">PhiMart</a>
+        <a className="btn btn-ghost font-bold text-2xl">PhiMart</a>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal text-xl font-semibold px-1">
           <li>
-            <a>Item 1</a>
+            <Link to='/'>Home</Link>
           </li>
           <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
+              <Link to="/about">About</Link>
+
           </li>
           <li>
             <Link to="/shop">Shop</Link>
           </li>
+
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
         </ul>
       </div>
       <div className="navbar-end">
@@ -121,7 +111,7 @@ const Navbar = () => {
                   </span>
                   <div className="card-actions">
                     <Link to="dashboard/cart/">
-                      <button className="btn btn-primary btn-block">
+                      <button className="btn btn-secondary btn-block">
                         View cart
                       </button>
                     </Link>
@@ -144,7 +134,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="font-bold text-xl  menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <li>
                   <Link to="dashboard/profile">
@@ -154,7 +144,8 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+              <Link to="/about">About</Link>
+
                 </li>
                 <Link to="dashboard">
                 <li>

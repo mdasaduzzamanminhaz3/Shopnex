@@ -12,7 +12,7 @@ const FilterSection = ({
   return (
     <div className="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto px-6 py-6">
       {/* Price Range */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-gradient-to-br to-pink-100  from-blue-100  p-4 rounded-lg shadow">
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Price Range
         </label>
@@ -64,12 +64,12 @@ const FilterSection = ({
       </div>
 
       {/* Category Filter */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-gradient-to-tr to-pink-100  from-blue-100 p-4 rounded-lg shadow">
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Category
         </label>
         <select
-          className="w-full p-2 border rounded-md"
+          className="w-full p-2 border rounded-md outline outline-pink-400"
           value={selectedCategory}
           onChange={(e) => handleCategoryChange(e.target.value)}
         >
@@ -83,7 +83,7 @@ const FilterSection = ({
       </div>
 
       {/* Search */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-gradient-to-br to-pink-100  from-blue-100 p-4 rounded-lg shadow">
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Search
         </label>
@@ -91,18 +91,18 @@ const FilterSection = ({
           type="text"
           value={searchQuery}
           onChange={(e) => handleSearchQuery(e.target.value)}
-          placeholder="Search books..."
-          className="w-full p-2 border rounded-md"
+          placeholder="Search products..."
+          className="w-full p-2 border rounded-md outline outline-pink-400"
         />
       </div>
 
       {/* Sorting  */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-gradient-to-br to-pink-100  from-blue-100 p-4 rounded-lg shadow">
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Sort By Price
         </label>
         <select
-          className="w-full p-2 border rounded-md"
+          className="w-full outline outline-pink-600 p-2 border rounded-md"
           value={sortOrder}
           onChange={(e) => handleSorting(e.target.value)}
         >

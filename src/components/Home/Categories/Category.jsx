@@ -9,7 +9,9 @@ const Category = () => {
   useEffect(() => {
     setLoading(true);
     apiClient.get("/categories")
-    .then((res) => setCategories(res.data))
+    .then((res) => {setCategories(res.data)
+      console.log("category fetching in category.jsx",res.data);
+    })
     .catch((err) => setError(err.message))
     .finally(() => setLoading(false));
   }, []);
@@ -18,10 +20,10 @@ const Category = () => {
     <section className="py-16 px-8 mx-auto">
       {/* Category Heading  */}
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold">Browse Categories</h2>
+        <h2 className="text-2xl font-bold">Browse Categories</h2>
         <a
           href="#"
-          className="btn btn-secondary px-6 py-6 rounded-full text-lg"
+          className="btn btn-secondary px-4 py-4 rounded-full text-lg"
         >
           View All
         </a>

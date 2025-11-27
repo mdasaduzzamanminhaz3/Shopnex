@@ -136,7 +136,7 @@ const handleImageUpload = async() => {
           )}
         </div>
 
-        <button type="submit" className="btn btn-primary w-full">
+        <button type="submit" className="btn btn-secondary w-full">
           Add Product
         </button>
       </form> 
@@ -158,7 +158,7 @@ const handleImageUpload = async() => {
                 ))}
             </div>
             )}
-            <button disabled={loading} onClick={handleImageUpload} className="btn btn-primary w-full mt-2">{loading ?"Uploading images...":"Upload Images"}</button>
+            <button disabled={loading} onClick={handleImageUpload} className="btn btn-secondary w-full mt-2">{loading ?"Uploading images...":"Upload Images"}</button>
         </div>
     )}
 

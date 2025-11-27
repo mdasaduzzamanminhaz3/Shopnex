@@ -24,11 +24,11 @@ const Products = () => {
   return (
     <section className="bg-gray-50 mx-auto py-16 ">
       <div className="flex justify-between items-center px-4 md:px-8 mb-4">
-        <h2 className="text-3xl md:text-4xl font-bold">Trending Products</h2>
+        <h2 className="text-3xl md:text-2xl font-bold">Trending Products</h2>
 
         
         <a
-          href="/shop" className="btn btn-secondary px-6 py-6 rounded-full text-lg">
+          href="/shop" className="btn btn-secondary px-4 py-4 rounded-full text-lg">
           View All
         </a>
         
@@ -50,7 +50,7 @@ const Products = () => {
         slidesPerView={1}
         navigation
         breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
-        className="mt-4 px-4 container"
+        className="mt-4 px-4 mr-2 container"
       >
         {products.map((product) => (
           <SwiperSlide key={product.id} className="flex justify-center hover:shadow-lg">

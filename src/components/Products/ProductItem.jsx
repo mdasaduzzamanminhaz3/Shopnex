@@ -4,7 +4,7 @@ import { Link } from "react-router";
 const ProductItem = ({ product }) => {
   return (
     <Link to={`/shop/${product.id}`}>
-    <div className="card bg-base-100 w-96 shadow-sm mx-auto">
+    <div className="card bg-gradient-to-br to-pink-100 from-blue-00 hover:to-pink-200 hover:from-blue-200 w-96 shadow-sm mx-auto">
       <figure className="px-10 pt-10">
         <img
           src={

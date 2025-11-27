@@ -59,7 +59,7 @@ const AddToCartButton = ({ product }) => {
         </button>
       </div>
       <button
-        className="btn btn-primary w-full"
+        className="btn bg-pink-500 text-white w-full"
         onClick={addToCart}
         disabled={isAdding || isAdded || product.stock === 0}
       >

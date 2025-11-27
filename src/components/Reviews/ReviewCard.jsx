@@ -37,7 +37,7 @@ const ReviewCard = ({
             <div className="flex gap-2">
               <button
                 onClick={onEditClick}
-                className="btn btn-sm btn-outline btn-primary"
+                className="btn btn-sm btn-outline btn-secondary"
               >
                 Edit
               </button>
