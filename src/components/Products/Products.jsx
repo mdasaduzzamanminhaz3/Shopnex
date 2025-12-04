@@ -24,7 +24,7 @@ const Products = () => {
   return (
     <section className="bg-gray-50 mx-auto py-16 ">
       <div className="flex justify-between items-center px-4 md:px-8 mb-4">
-        <h2 className="text-3xl md:text-2xl font-bold">Trending Products</h2>
+        <h2 className="text-2xl font-bold">Trending Products</h2>
 
         
         <a

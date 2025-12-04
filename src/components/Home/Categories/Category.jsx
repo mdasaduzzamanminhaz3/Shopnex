@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../../../services/api-client";
 import CategoryItems from "./CategoryItems";
+import ErrorAlert from "../../ErrorAlert";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
@@ -12,7 +13,9 @@ const Category = () => {
     .then((res) => {setCategories(res.data)
       console.log("category fetching in category.jsx",res.data);
     })
-    .catch((err) => setError(err.message))
+    .catch((err) => {setError(err.message) 
+      console.log("category error",err.message);
+    })
     .finally(() => setLoading(false));
   }, []);
 //   py-12 px-4 max-w-7xl

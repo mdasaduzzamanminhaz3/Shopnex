@@ -6,7 +6,7 @@ const Navbar = () => {
   const { user, logoutUser } = useAuthContext();
   const { cart } = useCartContext();
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar shadow-sm sticky top-0 z-50 dark:text-white bg-white/30 backdrop-blur-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,7 +28,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="font-bold menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="font-bold menu menu-sm dropdown-content dark:text-white bg-white/30 backdrop-blur-sm rounded-box z-1 mt-3 w-52 p-2 shadow "
           >
             <Link to='/'>
             <li>
@@ -100,7 +100,7 @@ const Navbar = () => {
               </div>
               <div
                 tabIndex={0}
-                className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow"
+                className="card card-compact dropdown-content bg-white/30 backdrop-blur-3xl  z-1 mt-3 w-52 shadow"
               >
                 <div className="card-body">
                   <span className="text-lg font-bold">
@@ -134,7 +134,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="font-bold text-xl  menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="font-bold text-xl  menu menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <li>
                   <Link to="dashboard/profile">

@@ -16,6 +16,7 @@ import Orders from "../pages/Orders";
 import PaymentSuccess from "../pages/PaymentSuccess";
 import AddProduct from "../pages/AddProduct";
 import Contact from "../pages/Contact";
+import D_Products from "../components/Products/D_Products/D_Products";
 
 const AppRoutes = () => {
   return (
@@ -46,6 +47,7 @@ const AppRoutes = () => {
         <Route path="cart" element={<Cart />} />
         <Route path="orders" element={<Orders />} />
         <Route path="payment/success" element={<PaymentSuccess/>}/>
+        <Route path="products" element={<D_Products/>}/>
         <Route path="products/add" element={<AddProduct/>}/>
       </Route>
     </Routes>
