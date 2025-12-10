@@ -5,6 +5,9 @@ import { FaArrowLeft } from "react-icons/fa";
 import { Suspense, useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import ReviewSection from "../components/Reviews/ReviewSection";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
@@ -20,9 +23,35 @@ const ProductDetail = () => {
     });
   }, [productId]);
 
-  if (loading) return <div className="flex justify-center items-center py-10 min-h-screen">
-          <span className="loading loading-spinner text-center loading-xl text-secondary"></span>
+  if (loading) {
+    // Skeleton loader
+    return (
+      <div className="w-3/4 mx-auto px-4 py-8">
+        <div className="mb-6">
+          <Skeleton width={120} height={20} />
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          <div>
+            <Skeleton height={400} className="rounded-lg" />
+          </div>
+          <div className="flex flex-col space-y-4">
+            <Skeleton width={100} height={25} />
+            <Skeleton width="80%" height={35} />
+            <Skeleton width="40%" height={30} />
+            <Skeleton count={3} />
+            <Skeleton width={150} height={40} className="mt-auto" />
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <Skeleton width="60%" height={25} />
+          <Skeleton count={2} />
+        </div>
+      </div>
+    );
+  }
+
   if (!product) return <div>Product Not Found...</div>;
 
   return (

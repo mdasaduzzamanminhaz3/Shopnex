@@ -1,6 +1,7 @@
 import React from "react";
 import defaultImage from "../../assets/default_image.png";
 import { Link } from "react-router";
+import Skeleton from "react-loading-skeleton";
 
 const ProductItem = ({ product }) => {
   return (
@@ -11,25 +12,26 @@ const ProductItem = ({ product }) => {
 
         {/* Image */}
         <figure className="px-4 pt-4">
-          <img
-            src={
-              product.images.length > 0 ? product.images[0].image : defaultImage
-            }
-            alt={product.name}
-            className="rounded-xl w-full h-48 md:h-56 object-cover"
-          />
+ {product.images && product.images.length > 0 ? (
+  <img src={product.images[0].image} alt={product.name} />
+) : defaultImage ? (
+  <img src={defaultImage} alt="default" />
+) : (
+  <Skeleton width={350} height={200} />
+)}
+
         </figure>
 
         {/* Body */}
         <div className="card-body items-center text-center px-4">
           <h2 className="card-title text-lg md:text-xl font-bold line-clamp-1">
-            {product.name}
+            {product.name || <Skeleton/> }
           </h2>
 
           <h3 className="font-bold text-xl text-red-700">${product.price}</h3>
 
           <p className="text-gray-700 text-sm line-clamp-2">
-            {product.description}
+            {product.description || <Skeleton count={3}/> }
           </p>
 
           <div className="card-actions mt-3">

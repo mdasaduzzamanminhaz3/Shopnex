@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import ReviewList from "./ReviewList";
 import apiClient from "../../services/api-client";
 import useAuthContext from "../../hooks/useAuthContext";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ReviewSection = () => {
   const { productId } = useParams();
@@ -94,9 +96,26 @@ const ReviewSection = () => {
       <div className="divider"></div>
 
       {isLoading ? (
-        <div className="flex justify-center items-center py-10 min-h-screen">
-          <span className="loading loading-spinner text-center loading-xl text-secondary"></span>
+<div className="space-y-6">
+          {Array(3)
+            .fill()
+            .map((_, index) => (
+              <div
+                key={index}
+                className="card bg-base-100 shadow-md border border-base-200 rounded-xl p-4"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <Skeleton circle width={50} height={50} />
+                  <div className="flex-1">
+                    <Skeleton width="40%" height={20} />
+                    <Skeleton width="30%" height={15} />
+                  </div>
+                </div>
+                <Skeleton count={3} />
+              </div>
+            ))}
         </div>
+
       ) : reviews.length === 0 ? (
         <div className="text-center py-8">
           <div className="text-5xl mb-4">📝</div>

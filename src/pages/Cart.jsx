@@ -2,6 +2,8 @@ import { Suspense, useEffect, useState } from "react";
 import useCartContext from "../hooks/useCartContext";
 import CartItemList from "../components/Cart/CartItemList";
 import CartSummary from "../components/Cart/CartSummary";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Cart = () => {
   const {
@@ -24,9 +26,41 @@ const Cart = () => {
     setLocalCart(cart);
   }, [cart]);
 
-  if (loading) return <div className="flex justify-center items-center py-10 min-h-screen">
-          <span className="loading loading-spinner text-center loading-xl text-secondary"></span>
-        </div>;
+  if (loading)
+return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-4">
+            {Array(3)
+              .fill()
+              .map((_, index) => (
+                <div
+                  key={index}
+                  className="card bg-base-100 shadow-md border border-base-200 rounded-xl p-4"
+                >
+                  <div className="flex items-center gap-4 mb-3">
+                    <Skeleton circle width={60} height={60} />
+                    <div className="flex-1">
+                      <Skeleton width="60%" height={20} />
+                      <Skeleton width="40%" height={15} />
+                    </div>
+                  </div>
+                  <Skeleton width="30%" height={20} />
+                  <Skeleton width="50%" height={20} />
+                </div>
+              ))}
+          </div>
+          <div className="card bg-base-100 shadow-md border border-base-200 rounded-xl p-6">
+            <Skeleton width="50%" height={30} className="mb-4" />
+            <Skeleton width="70%" height={20} className="mb-2" />
+            <Skeleton width="40%" height={20} className="mb-2" />
+            <Skeleton height={40} className="mt-4 rounded" />
+          </div>
+        </div>
+      </div>
+    );
+
+  
   if (!localCart) return <p>No Cart Found</p>;
 
   const handleUpdateQuantity = async (itemId, newQuantity) => {

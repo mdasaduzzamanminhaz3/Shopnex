@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import apiClient from "../../../services/api-client";
 import CategoryItems from "./CategoryItems";
 import ErrorAlert from "../../ErrorAlert";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
@@ -33,10 +35,22 @@ const Category = () => {
       </div>
        {/* Spinner */}
       {loading && (
-        <div className="flex justify-center items-center py-10">
-          <span className="loading loading-spinner text-center loading-xl text-secondary"></span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {Array(4)
+            .fill()
+            .map((_, index) => (
+              <div
+                key={index}
+                className="card bg-gradient-to-br from-blue-50 to-pink-50 shadow-md w-full max-w-xs mx-auto rounded-xl p-4"
+              >
+                <Skeleton height={150} className="rounded-xl mb-4" />
+                <Skeleton height={20} width={`70%`} className="mb-2" />
+                <Skeleton height={15} width={`50%`} />
+              </div>
+            ))}
         </div>
       )}
+
 
        {error && <ErrorAlert error={error} />}
 

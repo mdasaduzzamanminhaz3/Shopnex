@@ -7,6 +7,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import ErrorAlert from "../ErrorAlert";
 import apiClient from "../../services/api-client";
+import "react-loading-skeleton/dist/skeleton.css";
+import Skeleton from "react-loading-skeleton";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -33,13 +35,34 @@ const Products = () => {
         </a>
         
       </div>
-      {/* Spinner */}
+      {/* Loading skeleton */}
       {isLoading && (
-        <div className="flex justify-center items-center py-10">
-          <span className="loading loading-spinner text-center loading-xl text-secondary"></span>
-        </div>
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={10}
+          slidesPerView={1}
+          navigation
+          breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
+          className="mt-4 px-4 mr-2 container"
+        >
+          {Array(6)
+            .fill()
+            .map((_, index) => (
+              <SwiperSlide key={index} className="flex justify-center">
+                <div className="card bg-gradient-to-br from-blue-50 to-pink-50 shadow-md w-full max-w-xs mx-auto rounded-xl p-4">
+                  <Skeleton height={200} className="rounded-xl mb-4" />
+                  <Skeleton height={20} width={`80%`} className="mb-2" />
+                  <Skeleton height={20} width={`60%`} className="mb-2" />
+                  <Skeleton count={2} />
+                  <Skeleton height={40} className="mt-4 rounded" />
+                </div>
+              </SwiperSlide>
+            ))}
+        </Swiper>
       )}
+
       {error && <ErrorAlert error={error} />}
+      
       {/* product slider */}
 
       {!isLoading && !error && products.length > 0 &&(
