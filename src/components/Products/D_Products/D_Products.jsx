@@ -10,10 +10,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { Link } from "react-router";
 import authApiClient from "../../../services/auth-api-client";
 
-
-
 const D_Products = () => {
-
   const [currentPage, setCurrentPage] = useState(1);
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,54 +32,53 @@ const D_Products = () => {
     });
     setCurrentPage(1);
   };
-const handleDelete = async (id) => {
- if (!window.confirm("Are you sure you want to delete this product?")) return;
-try {
-  await authApiClient.delete(`/products/${id}`);
-  alert("Product deleted successfully!");
-} catch (error) {
-  console.log("Error deletin product",error);
-}
- 
-}
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this product?"))
+      return;
+    try {
+      await authApiClient.delete(`/products/${id}`);
+      alert("Product deleted successfully!");
+    } catch (error) {
+      console.log("Error deletin product", error);
+    }
+  };
 
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 py-10">
-        {Array(10).fill().map((_, index) => (
-          <div
-            key={index}
-            className="card bg-gradient-to-br from-blue-50 to-pink-50 shadow-md w-full max-w-xs mx-auto rounded-xl p-4"
-          >
-            <Skeleton height={200} className="rounded-xl mb-4" />
-            <Skeleton height={20} width={`80%`} className="mb-2" />
-            <Skeleton height={20} width={`60%`} className="mb-2" />
-            <Skeleton count={2} />
-            <Skeleton height={40} className="mt-4 rounded" />
-          </div>
-        ))}
+        {Array(10)
+          .fill()
+          .map((_, index) => (
+            <div
+              key={index}
+              className="card bg-gradient-to-br from-blue-50 to-pink-50 shadow-md w-full max-w-xs mx-auto rounded-xl p-4"
+            >
+              <Skeleton height={200} className="rounded-xl mb-4" />
+              <Skeleton height={20} width={`80%`} className="mb-2" />
+              <Skeleton height={20} width={`60%`} className="mb-2" />
+              <Skeleton count={2} />
+              <Skeleton height={40} className="mt-4 rounded" />
+            </div>
+          ))}
       </div>
     );
   }
 
   if (!products || !Array.isArray(products)) return <p>No products</p>;
   return (
-    
     <div>
-      
-            <FilterSection
-              priceRange={priceRange}
-              handlePriceChange={handlePriceChange}
-              categories={categories}
-              selectedCategory={selectedCategory}
-              handleCategoryChange={setSelectedCategory}
-              searchQuery={searchQuery}
-              handleSearchQuery={setSearchQuery}
-              sortOrder={sortOrder}
-              handleSorting={setSortOrder}
-            />
+      <FilterSection
+        priceRange={priceRange}
+        handlePriceChange={handlePriceChange}
+        categories={categories}
+        selectedCategory={selectedCategory}
+        handleCategoryChange={setSelectedCategory}
+        searchQuery={searchQuery}
+        handleSearchQuery={setSearchQuery}
+        sortOrder={sortOrder}
+        handleSorting={setSortOrder}
+      />
 
-      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 ">
         {products.map((product) => (
           <div
@@ -117,9 +113,19 @@ try {
                 {product.description}
               </p>
 
-              <div className= " flex card-actions mt-3">
-                <Link to={`/dashboard/products/update/${product.id}`} className="btn outline outline-purple-600 hover:outline-purple-900 hover:outline-2 ">Update</Link>
-                <button onClick={() =>  handleDelete(product.id)} className="btn outline outline-red-600 hover:outline-red-900 hover:outline-2">Delete</button>
+              <div className=" flex card-actions mt-3">
+                <Link
+                  to={`/dashboard/products/update/${product.id}`}
+                  className="btn outline outline-purple-600 hover:outline-purple-900 hover:outline-2 "
+                >
+                  Update
+                </Link>
+                <button
+                  onClick={() => handleDelete(product.id)}
+                  className="btn outline outline-red-600 hover:outline-red-900 hover:outline-2"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>

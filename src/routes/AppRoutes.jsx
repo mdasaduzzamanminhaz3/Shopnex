@@ -18,6 +18,9 @@ import AddProduct from "../pages/AddProduct";
 import Contact from "../pages/Contact";
 import D_Products from "../components/Products/D_Products/D_Products";
 import Update_Products from "../components/Products/D_Products/Update_Products";
+import D_Category from "../components/Products/D_Category/D_Category";
+import UpdateCategory from "../components/Products/D_Category/UpdateCategory";
+import D_AddCategory from "../components/Products/D_Category/D_AddCategory";
 
 const AppRoutes = () => {
   return (
@@ -51,6 +54,11 @@ const AppRoutes = () => {
         <Route path="products" element={<D_Products/>}/>
         <Route path="products/add" element={<AddProduct/>}/>
         <Route path="products/update/:id" element={<Update_Products/>}/>
+        <Route path="categories" element={<D_Category/>}/>
+        <Route path="category/add" element={<D_AddCategory/>}/>
+
+        <Route path="category/update/:id" element={<UpdateCategory/>}/>
+
       </Route>
     </Routes>
   );
