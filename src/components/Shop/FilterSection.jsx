@@ -1,3 +1,5 @@
+import React from "react";
+
 const FilterSection = ({
   priceRange,
   handlePriceChange,
@@ -115,4 +117,4 @@ const FilterSection = ({
   );
 };
 
-export default FilterSection;
+export default React.memo(FilterSection);
