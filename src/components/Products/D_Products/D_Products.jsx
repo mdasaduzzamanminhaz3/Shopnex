@@ -7,6 +7,7 @@ import { useState } from "react";
 import Pagination from "../../Shop/Pagination";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Link } from "react-router";
 
 
 
@@ -103,7 +104,7 @@ const D_Products = () => {
               </p>
 
               <div className= " flex card-actions mt-3">
-                <button className="btn outline outline-purple-600 hover:outline-purple-900 hover:outline-2 ">Update</button>
+                <Link to={`/dashboard/products/update/${product.id}`} className="btn outline outline-purple-600 hover:outline-purple-900 hover:outline-2 ">Update</Link>
                 <button className="btn outline outline-red-600 hover:outline-red-900 hover:outline-2">Delete</button>
               </div>
             </div>

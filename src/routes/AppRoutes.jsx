@@ -17,6 +17,7 @@ import PaymentSuccess from "../pages/PaymentSuccess";
 import AddProduct from "../pages/AddProduct";
 import Contact from "../pages/Contact";
 import D_Products from "../components/Products/D_Products/D_Products";
+import Update_Products from "../components/Products/D_Products/Update_Products";
 
 const AppRoutes = () => {
   return (
@@ -49,6 +50,7 @@ const AppRoutes = () => {
         <Route path="payment/success" element={<PaymentSuccess/>}/>
         <Route path="products" element={<D_Products/>}/>
         <Route path="products/add" element={<AddProduct/>}/>
+        <Route path="products/update/:id" element={<Update_Products/>}/>
       </Route>
     </Routes>
   );
