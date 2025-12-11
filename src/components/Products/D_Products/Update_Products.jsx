@@ -1,5 +1,4 @@
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import useFetchCategories from "../../../hooks/useFetchCategories";
 import apiClient from "../../../services/api-client";
@@ -10,6 +9,7 @@ const Update_Products = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const categories = useFetchCategories();
+  const [product, setProduct] = useState(null); 
 
   const {
     register,
@@ -19,18 +19,37 @@ const Update_Products = () => {
   } = useForm();
 
   useEffect(() => {
-    apiClient.get(`/products/${id}`).then((res) => {
-      reset(res.data);
+    apiClient.get(`/products/${id}/`).then((res) => {
+      setProduct(res.data);   
+      reset(res.data);        
     });
   }, [id, reset]);
 
   const onSubmit = async (data) => {
     try {
-      await authApiClient.put(`/products/${id}/`, data);
-      alert("Product Updated Successfully!");
+    
+      await authApiClient.put(`/products/${id}/`, {
+        name: data.name,
+        description: data.description,
+        price: data.price,
+        stock: data.stock,
+        category: data.category,
+      });
+
+      if (data.imageFile && data.imageFile.length > 0) {
+        const formData = new FormData();
+        formData.append("image", data.imageFile[0]);
+
+        await authApiClient.post(`/products/${id}/images/`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      }
+
+      alert("Product and image updated successfully!");
       navigate("/dashboard/products");
     } catch (error) {
-      console.log("product updating error", error);
+      console.error("Error updating product or image:", error);
+      alert("Failed to update product!");
     }
   };
 
@@ -104,6 +123,34 @@ const Update_Products = () => {
           <p className="text-red-500">{errors.category.message}</p>
         )}
       </div>
+
+      {/* Image Upload */}
+<div>
+  <label className="block font-medium">Current Images</label>
+  {product?.images?.length > 0 ? (
+    <div className="flex flex-wrap gap-4 mb-2">
+      {product.images.map((img) => (
+        <img
+          key={img.id}
+          src={img.image}
+          alt="Product"
+          className="w-32 h-32 object-cover rounded"
+        />
+      ))}
+    </div>
+  ) : (
+    <p className="text-gray-500">No images available</p>
+  )}
+
+  <label className="block font-medium">Update Images</label>
+  <input
+    type="file"
+    accept="image/*"
+    multiple   
+    {...register("imageFile")}
+    className="file-input file-input-bordered w-full"
+  />
+</div>
 
       <button type="submit" className="btn btn-primary">
         Update Product

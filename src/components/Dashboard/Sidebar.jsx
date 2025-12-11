@@ -28,7 +28,6 @@ const Sidebar = () => {
     { to: "/dashboard/category/add", icon: FiPlusCircle, label: "Add Category" },
     { to: "/dashboard/cart", icon: FiShoppingCart, label: "Cart" },
     { to: "/dashboard/orders", icon: FiShoppingCart, label: "Orders" },
-    { to: "/reviews", icon: FiStar, label: "Reviews" },
     { to: "/users", icon: FiUsers, label: "Users" },
   ];
 
