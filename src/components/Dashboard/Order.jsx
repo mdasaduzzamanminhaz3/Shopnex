@@ -1,5 +1,10 @@
+import useFetchOrder from "../../hooks/useFetchOrder";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 const Order = () => {
-  
+  const { orders, loading } = useFetchOrder();
+
   return (
     <div className="mt-6 card bg-base-100 shadow-sm">
       <div className="card-body">
@@ -16,42 +21,32 @@ const Order = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>#ORD-7245</td>
-                <td>John Smith</td>
-                <td>
-                  <div className="badge badge-success">Completed</div>
-                </td>
-                <td>Mar 8, 2025</td>
-                <td>$125.00</td>
-              </tr>
-              <tr>
-                <td>#ORD-7244</td>
-                <td>Sarah Johnson</td>
-                <td>
-                  <div className="badge badge-warning">Processing</div>
-                </td>
-                <td>Mar 7, 2025</td>
-                <td>$89.99</td>
-              </tr>
-              <tr>
-                <td>#ORD-7243</td>
-                <td>Michael Brown</td>
-                <td>
-                  <div className="badge badge-info">Shipped</div>
-                </td>
-                <td>Mar 7, 2025</td>
-                <td>$245.50</td>
-              </tr>
-              <tr>
-                <td>#ORD-7242</td>
-                <td>Emily Davis</td>
-                <td>
-                  <div className="badge badge-success">Completed</div>
-                </td>
-                <td>Mar 6, 2025</td>
-                <td>$112.75</td>
-              </tr>
+              {loading ? (
+                // Skeleton rows
+                Array(5)
+                  .fill()
+                  .map((_, index) => (
+                    <tr key={index}>
+                      <td><Skeleton width={60} /></td>
+                      <td><Skeleton width={100} /></td>
+                      <td><Skeleton width={80} height={25} /></td>
+                      <td><Skeleton width={120} /></td>
+                      <td><Skeleton width={80} /></td>
+                    </tr>
+                  ))
+              ) : (
+                orders.map((order) => (
+                  <tr key={order.id}>
+                    <td>{order.id}</td>
+                    <td>{order.user}</td>
+                    <td>
+                      <div className="badge badge-success">{order.status}</div>
+                    </td>
+                    <td>{order.created_at}</td>
+                    <td>{order.total_price}</td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

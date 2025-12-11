@@ -28,7 +28,6 @@ const Sidebar = () => {
     { to: "/dashboard/category/add", icon: FiPlusCircle, label: "Add Category" },
     { to: "/dashboard/cart", icon: FiShoppingCart, label: "Cart" },
     { to: "/dashboard/orders", icon: FiShoppingCart, label: "Orders" },
-    { to: "/users", icon: FiUsers, label: "Users" },
   ];
 
   const menuItems = user.is_staff ? adminMenues : customerMenus;
